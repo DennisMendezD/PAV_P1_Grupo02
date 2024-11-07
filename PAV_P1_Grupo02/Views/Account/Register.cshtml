@@ -1,0 +1,115 @@
+﻿@model PAV_P1_Grupo02.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+        <div class="row">
+            @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Apellidos, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Apellidos, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Edad, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Edad, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Puesto, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Puesto, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.TarjetaCredito, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.TarjetaCredito, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Pais, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Pais, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Provincia, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Provincia, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Distrito, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Distrito, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Canton, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Canton, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            @Html.LabelFor(m => m.Detalle, new { @class = "col-md-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Detalle, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="offset-md-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-outline-dark" />
+            </div>
+        </div>
+    }
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
