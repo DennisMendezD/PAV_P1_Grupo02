@@ -275,7 +275,7 @@ namespace PAV_P1_Grupo02.Controllers
             }
             AddErrors(result);
             return View();
-            //pruba git
+            //prueba git
         }
 
         //
