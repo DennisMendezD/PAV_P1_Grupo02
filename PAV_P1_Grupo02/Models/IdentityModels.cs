@@ -20,8 +20,9 @@ namespace PAV_P1_Grupo02.Models
         public string Canton {  get; set; }
         public string Detalle {  get; set; }
 
-        //Video del 7 de octubre
+        // Video del 7 de octubre
         // Continuar en 1:59 minutos.
+        // Prueba de almacenaje en nube.
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
