@@ -23,6 +23,7 @@ namespace PAV_P1_Grupo02.Models
         // Video del 7 de octubre
         // Continuar en 1:59 minutos.
         // Prueba de almacenaje en nube.
+        //oto cambio
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
