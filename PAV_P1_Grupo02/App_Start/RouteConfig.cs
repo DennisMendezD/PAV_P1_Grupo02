@@ -16,7 +16,9 @@ namespace PAV_P1_Grupo02
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+
+                //Define cuál es el controlador que y método que se ejecuta al iniciar el programa.
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

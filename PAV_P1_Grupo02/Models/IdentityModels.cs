@@ -21,9 +21,9 @@ namespace PAV_P1_Grupo02.Models
         public string Detalle {  get; set; }
 
         // Video del 7 de octubre
-        // Continuar en 1:59 minutos.
-        // Prueba de almacenaje en nube.
-        //oto cambio m
+        // Continuar en 2:08:35 minutos.
+        // Prueba de almacenaje en nube ---> Dennis Méndez.
+        // Otro cambio de prueba ---> Verónica del Carmen.
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
