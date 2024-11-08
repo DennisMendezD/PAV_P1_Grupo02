@@ -41,6 +41,13 @@
             </div>
         </div>
 
+        @*<div class="row">
+            @Html.Label("Seleccione un rol:", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("RoleId", new SelectList(ViewBag.Roles) , "Seleccione un rol", new { @class = "form-control" })
+            </div>
+        </div>*@
+
         <div class="row">
             @Html.LabelFor(m => m.TarjetaCredito, new { @class = "col-md-2 col-form-label" })
             <div class="col-md-10">
