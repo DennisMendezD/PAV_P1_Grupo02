@@ -46,7 +46,15 @@ namespace PAV_P1_Grupo02.Controllers
                         var oPersona = new PERSONAS();
                         oPersona.ID_PERSONA = model.Id;
                         oPersona.IDENTIFICACION = model.Identificacion;
+                        oPersona.NOMBRE_COMPLETO = model.NombreCompleto;
+                        oPersona.EDAD = model.Edad;
+                        oPersona.ESTADO = model.Estado;
+
+                        db.PERSONAS.Add(oPersona);
+                        db.SaveChanges();
                     }
+
+                    return Redirect("/");
                 }
 
                 return View(model);
@@ -57,15 +65,65 @@ namespace PAV_P1_Grupo02.Controllers
             }
         }
 
-        public ActionResult Editar()
+        public ActionResult Editar(int id)
         {
-            return View();
+            PersonasViewModel model = new PersonasViewModel();
+
+            using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+            {
+                var oPersona = db.PERSONAS.Find(id);
+                model.Id = oPersona.ID_PERSONA;
+                model.Identificacion = oPersona.IDENTIFICACION;
+                model.NombreCompleto = oPersona.NOMBRE_COMPLETO;
+                model.Edad = oPersona.EDAD;
+                model.Estado = oPersona.ESTADO;
+            }
+
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult Editar(PersonasViewModel model)
         {
-            return View();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+                    {
+                        var oPersona = db.PERSONAS.Find(model.Id);
+                        oPersona.ID_PERSONA = model.Id;
+                        oPersona.IDENTIFICACION = model.Identificacion;
+                        oPersona.NOMBRE_COMPLETO = model.NombreCompleto;
+                        oPersona.EDAD = model.Edad;
+                        oPersona.ESTADO = model.Estado;
+
+                        db.PERSONAS.Add(oPersona);
+                        db.Entry(oPersona).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+
+                    return Redirect("/");
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
-    }
-}
+
+        [HttpGet]
+        public ActionResult Eliminar (int id)
+        {
+            using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+            {
+                var oPersona = db.PERSONAS.Find(id);
+                db.PERSONAS.Remove(oPersona);
+                db.SaveChanges();
+            }
+
+            return Redirect("/");
+        }
+    }}
