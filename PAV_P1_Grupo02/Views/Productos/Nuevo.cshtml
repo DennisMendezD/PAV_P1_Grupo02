@@ -1,7 +1,47 @@
-﻿
+﻿@model PAV_P1_Grupo02.Models.ViewModels.ProductosViewModel
+
 @{
     ViewBag.Title = "Nuevo";
 }
 
-<h2>Nuevo</h2>
+<h2>@ViewBag.Title</h2>
+<br />
+<br />
 
+
+@using (Html.BeginForm("Nuevo", "Productos", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <div>
+                @Html.LabelFor(d => d.Nombre)
+                @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Nombre, "", new { @class = "red" })
+
+            </div>
+
+            <div>
+                @Html.LabelFor(d => d.Descripcion)
+                @Html.TextBoxFor(d => d.Descripcion, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Descripcion, "", new { @class = "red" })
+
+            </div>
+
+            <div>
+                @Html.LabelFor(d => d.Cantidad)
+                @Html.TextBoxFor(d => d.Cantidad, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Cantidad, "", new { @class = "red" })
+
+            </div>
+
+            <div style="text-align:right;">
+                <input value=" Guardar" class="btn btn-primary" type="submit" />
+            </div>
+
+        </div>
+
+    </div>
+
+}

@@ -1,7 +1,48 @@
-﻿
+﻿@model PAV_P1_Grupo02.Models.ViewModels.TiendasViewModel
+
 @{
     ViewBag.Title = "Editar";
 }
 
-<h2>Editar</h2>
+<h2>@ViewBag.Title</h2>
+<br />
+<br />
 
+
+@using (Html.BeginForm("Editar", "Tiendas", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            @Html.HiddenFor(d => d.Id_Tienda)
+
+            <div>
+                @Html.LabelFor(d => d.Nombre)
+                @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Nombre, "", new { @class = "red" })
+
+            </div>
+
+            <div>
+                @Html.LabelFor(d => d.Direccion)
+                @Html.TextBoxFor(d => d.Direccion, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Direccion, "", new { @class = "red" })
+
+            </div>
+
+            <div>
+                @Html.LabelFor(d => d.Telefono)
+                @Html.TextBoxFor(d => d.Telefono, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Telefono, "", new { @class = "red" })
+
+            </div>
+
+            <div style="text-align:right;">
+                <input value=" Guardar" class="btn btn-primary" type="submit" />
+            </div>
+
+        </div>
+
+    </div>
+
+}
