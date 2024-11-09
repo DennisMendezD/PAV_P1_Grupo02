@@ -1,7 +1,40 @@
-﻿
+﻿@model List<PAV_P1_Grupo02.Models.ViewModels.TiendasViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tiendas";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title </h2>
 
+<div style="text-align:right;">
+    <a href="~/Tiendas/Nuevo" class="btn btn-primary">Registrar Tienda</a>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+            </tr>
+            @foreach (var Objeto in Model)
+            {
+                <tr>
+                    <td>@Objeto.Id_Tienda</td>
+                    <td>@Objeto.Nombre</td>
+                    <td>@Objeto.Direccion</td>
+                    <td>@Objeto.Telefono</td>
+
+                    <td>
+                        <a class="btn btn-secondary" href="~/Tiendas/Editar/@Objeto.Id_Tienda">Editar</a>
+                        <a class="btn btn-danger" href="~/Tiendas/Eliminar/@Objeto.Id_Tienda">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+</div>
