@@ -18,8 +18,7 @@ namespace PAV_P1_Grupo02.Models.ViewModels
         public string NombreCompleto { get; set; }
 
         [Required]
-        [Display(Name = "Edad")]
-        public int Edad { get; set; }
+        public int? Edad { get; set; }
 
         [Required]
         public string Estado { get; set; }

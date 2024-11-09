@@ -1,7 +1,40 @@
-﻿
+﻿@model List<PAV_P1_Grupo02.Models.ViewModels.PersonasViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Personas";
 }
 
-<h2>Index</h2>
+<h2>ViewBag.Title</h2>
 
+<div>
+    <a href="~/Personas/Nuevo" class=" btn btn-primary">Registrar persona</a>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>IDENTIFICACIÓN</th>
+                <th>NOMBRE</th>
+                <th>EDAD</th>
+                <th>ESTADO</th>
+            </tr>
+
+            @foreach (var oElemento in Model)
+            {
+                <tr>
+                    <td>@oElemento.Id</td>
+                    <td>@oElemento.Identificacion</td>
+                    <td>@oElemento.NombreCompleto</td>
+                    <td>@oElemento.Edad</td>
+                    <td>@oElemento.Estado</td>
+                    <td>
+                        <a class="btn btn-secondary" href="~/personas/editar/@oElemento.Id">Editar</a>
+                        <a class="btn btn-danger" href="~/personas/eliminar/@oElemento.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
