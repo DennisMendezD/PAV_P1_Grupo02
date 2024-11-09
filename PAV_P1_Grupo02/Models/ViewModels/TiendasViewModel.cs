@@ -20,6 +20,6 @@ namespace PAV_P1_Grupo02.Models.ViewModels
 
         [Required]
         [StringLength(8)]
-        public int Stock { get; set; }
+        public string Telefono { get; set; }
     }
 }
