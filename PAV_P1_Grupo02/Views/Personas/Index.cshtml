@@ -13,21 +13,21 @@
     <div class="col-md-12">
         <table class="table">
             <tr>
-                <th>ID</th>
-                <th>IDENTIFICACIÓN</th>
-                <th>NOMBRE</th>
-                <th>EDAD</th>
-                <th>ESTADO</th>
+                <th class="table-danger">ID</th>
+                <th class="table-danger">IDENTIFICACIÓN</th>
+                <th class="table-danger">NOMBRE</th>
+                <th class="table-danger">EDAD</th>
+                <th class="table-danger">ESTADO</th>
             </tr>
 
             @foreach (var oElemento in Model)
             {
                 <tr>
-                    <td>@oElemento.Id</td>
-                    <td>@oElemento.Identificacion</td>
-                    <td>@oElemento.NombreCompleto</td>
-                    <td>@oElemento.Edad</td>
-                    <td>@oElemento.Estado</td>
+                    <td class="table-success">@oElemento.Id</td>
+                    <td class="table-success">@oElemento.Identificacion</td>
+                    <td class="table-success">@oElemento.NombreCompleto</td>
+                    <td class="table-success">@oElemento.Edad</td>
+                    <td class="table-success">@oElemento.Estado</td>
                     <td>
                         <a class="btn btn-secondary" href="~/Personas/Editar/@oElemento.Id">Editar</a>
                         <a class="btn btn-danger" href="~/Personas/Eliminar/@oElemento.Id">Eliminar</a>
