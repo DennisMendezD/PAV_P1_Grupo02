@@ -13,7 +13,7 @@ namespace PAV_P1_Grupo02.Models.ViewModels
 
         [Required]
         [StringLength(100)]
-        public string Descrpcion { get; set; }
+        public string Descripcion { get; set; }
 
         [Required]
         public int Cantidad { get; set; }

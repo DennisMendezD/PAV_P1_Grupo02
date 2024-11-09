@@ -15,7 +15,7 @@ namespace PAV_P1_Grupo02.Controllers
         {
             List<PersonasViewModel> list = new List<PersonasViewModel>();
 
-            using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+            using (PAV_PARCIAL_IEntities1 db = new PAV_PARCIAL_IEntities1())
             {
                 list = (from d in db.PERSONAS select new PersonasViewModel { 
                     Id = d.ID_PERSONA,
@@ -41,7 +41,7 @@ namespace PAV_P1_Grupo02.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+                    using (PAV_PARCIAL_IEntities1 db = new PAV_PARCIAL_IEntities1())
                     {
                         var oPersona = new PERSONAS();
                         oPersona.ID_PERSONA = model.Id;
@@ -54,7 +54,7 @@ namespace PAV_P1_Grupo02.Controllers
                         db.SaveChanges();
                     }
 
-                    return Redirect("/");
+                    return RedirectToAction("Index");
                 }
 
                 return View(model);
@@ -69,14 +69,21 @@ namespace PAV_P1_Grupo02.Controllers
         {
             PersonasViewModel model = new PersonasViewModel();
 
-            using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+            using (PAV_PARCIAL_IEntities1 db = new PAV_PARCIAL_IEntities1())
             {
-                var oPersona = db.PERSONAS.Find(id);
-                model.Id = oPersona.ID_PERSONA;
-                model.Identificacion = oPersona.IDENTIFICACION;
-                model.NombreCompleto = oPersona.NOMBRE_COMPLETO;
-                model.Edad = oPersona.EDAD;
-                model.Estado = oPersona.ESTADO;
+                try
+                {
+                    var oPersona = db.PERSONAS.Find(id);
+                    model.Id = oPersona.ID_PERSONA;
+                    model.Identificacion = oPersona.IDENTIFICACION;
+                    model.NombreCompleto = oPersona.NOMBRE_COMPLETO;
+                    model.Edad = oPersona.EDAD;
+                    model.Estado = oPersona.ESTADO;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
             }
 
             return View(model);
@@ -89,7 +96,7 @@ namespace PAV_P1_Grupo02.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+                    using (PAV_PARCIAL_IEntities1 db = new PAV_PARCIAL_IEntities1())
                     {
                         var oPersona = db.PERSONAS.Find(model.Id);
                         oPersona.ID_PERSONA = model.Id;
@@ -103,7 +110,7 @@ namespace PAV_P1_Grupo02.Controllers
                         db.SaveChanges();
                     }
 
-                    return Redirect("/");
+                    return RedirectToAction("Index");
                 }
 
                 return View(model);
@@ -117,13 +124,13 @@ namespace PAV_P1_Grupo02.Controllers
         [HttpGet]
         public ActionResult Eliminar (int id)
         {
-            using (PAV_PARCIAL_IEntities db = new PAV_PARCIAL_IEntities())
+            using (PAV_PARCIAL_IEntities1 db = new PAV_PARCIAL_IEntities1())
             {
                 var oPersona = db.PERSONAS.Find(id);
                 db.PERSONAS.Remove(oPersona);
                 db.SaveChanges();
             }
 
-            return Redirect("/");
+            return RedirectToAction("Index");
         }
     }}

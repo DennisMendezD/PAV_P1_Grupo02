@@ -53,7 +53,7 @@ namespace PAV_P1_Grupo02.Controllers
                         dTienda.TIENDAS.Add(Objeto);
                         dTienda.SaveChanges();
                     }
-                    return Redirect("/");
+                    return RedirectToAction("Index");
                 }
                 return View(TModel);
 
@@ -99,7 +99,7 @@ namespace PAV_P1_Grupo02.Controllers
                         dTienda.Entry(Objeto).State = System.Data.Entity.EntityState.Modified;
                         dTienda.SaveChanges();
                     }
-                    return Redirect("/");
+                    return RedirectToAction("Index");
                 }
                 return View(TModel);
 
@@ -120,7 +120,7 @@ namespace PAV_P1_Grupo02.Controllers
                 dTienda.TIENDAS.Remove(Objeto);
                 dTienda.SaveChanges();
             }
-            return Redirect("/");
+            return RedirectToAction("Index");
         }
     }
 }

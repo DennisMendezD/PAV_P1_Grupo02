@@ -3,7 +3,7 @@
     ViewBag.Title = "Personas";
 }
 
-<h2>ViewBag.Title</h2>
+<h2>@ViewBag.Title</h2>
 
 <div>
     <a href="~/Personas/Nuevo" class=" btn btn-primary">Registrar persona</a>
@@ -29,8 +29,8 @@
                     <td>@oElemento.Edad</td>
                     <td>@oElemento.Estado</td>
                     <td>
-                        <a class="btn btn-secondary" href="~/personas/editar/@oElemento.Id">Editar</a>
-                        <a class="btn btn-danger" href="~/personas/eliminar/@oElemento.Id">Eliminar</a>
+                        <a class="btn btn-secondary" href="~/Personas/Editar/@oElemento.Id">Editar</a>
+                        <a class="btn btn-danger" href="~/Personas/Eliminar/@oElemento.Id">Eliminar</a>
                     </td>
                 </tr>
             }

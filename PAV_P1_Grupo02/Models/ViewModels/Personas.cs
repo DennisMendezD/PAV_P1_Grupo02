@@ -6,10 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PAV_P1_Grupo02.Models.ViewModels
 {
-    public class PersonasViewModel
+    public class Personas
     {
-        public int Id { get; set; }
-
         [Required]
         [StringLength(30)]
         public string Identificacion { get; set; }
@@ -25,7 +23,6 @@ namespace PAV_P1_Grupo02.Models.ViewModels
         [Required]
         [StringLength(10)]
         public string Estado { get; set; }
-
 
     }
 }

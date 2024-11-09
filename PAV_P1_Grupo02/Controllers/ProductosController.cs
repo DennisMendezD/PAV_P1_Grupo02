@@ -20,7 +20,7 @@ namespace PAV_P1_Grupo02.Controllers
                          select new ProductosViewModel
                          {
                              Id_Producto = datos.ID_PRODUCTO,
-                             Descrpcion = datos.DESCRIPCION_PRODUCTO,
+                             Descripcion = datos.DESCRIPCION_PRODUCTO,
                              Cantidad = datos.CANTIDAD_DISPONIBLE
                          }).ToList();
             }
@@ -28,7 +28,7 @@ namespace PAV_P1_Grupo02.Controllers
                 return View(lista);
         }
 
-        public ActionResult Nuevo(ProductosViewModel PModel)
+        public ActionResult Nuevo()
         {
             return View();
         }
@@ -43,16 +43,16 @@ namespace PAV_P1_Grupo02.Controllers
 
                     using (PAV_PARCIAL_IEntities dProducto = new PAV_PARCIAL_IEntities())
                     {
-                        var Objeto = new producto();
+                        var Objeto = new PRODUCTOS();
 
                         Objeto.ID_PRODUCTO = PModel.Id_Producto;
-                        Objeto.DESCRIPCION_PRODUCTO = PModel.Descrpcion;
+                        Objeto.DESCRIPCION_PRODUCTO = PModel.Descripcion;
                         Objeto.CANTIDAD_DISPONIBLE = PModel.Cantidad;
 
                         dProducto.PRODUCTOS.Add(Objeto);
                         dProducto.SaveChanges();
                     }
-                    return Redirect("/");
+                    return RedirectToAction("Index");
                 }
                 return View(PModel);
 
@@ -66,10 +66,10 @@ namespace PAV_P1_Grupo02.Controllers
 
         public ActionResult Editar(int id)
         {
-            ProductoViewModel PModel = new ProductosViewModel();
+            ProductosViewModel PModel = new ProductosViewModel();
             using (PAV_PARCIAL_IEntities dProducto = new PAV_PARCIAL_IEntities())
             {
-                var Objeto = dProducto.producto.Find(id);
+                var Objeto = dProducto.PRODUCTOS.Find(id);
 
                 PModel.Id_Producto = Objeto.ID_PRODUCTO;
                 PModel.Descripcion = Objeto.DESCRIPCION_PRODUCTO;
@@ -89,16 +89,16 @@ namespace PAV_P1_Grupo02.Controllers
 
                     using (PAV_PARCIAL_IEntities dProducto = new PAV_PARCIAL_IEntities())
                     {
-                        var Objeto = dProducto.producto.Find(PModel.Id_Producto);
+                        var Objeto = dProducto.PRODUCTOS.Find(PModel.Id_Producto);
 
                         Objeto.ID_PRODUCTO = PModel.Id_Producto;
-                        Objeto.DESCRIPCION_PRODUCTO = PModel.Nombre;
-                        Objeto.CANTIDAD_DISPONIBLE = PModel.Precio;
+                        Objeto.DESCRIPCION_PRODUCTO = PModel.Descripcion;
+                        Objeto.CANTIDAD_DISPONIBLE = PModel.Cantidad;
 
                         dProducto.Entry(Objeto).State = System.Data.Entity.EntityState.Modified;
                         dProducto.SaveChanges();
                     }
-                    return Redirect("/");
+                    return RedirectToAction("Index");
                 }
                 return View(PModel);
 
@@ -115,11 +115,11 @@ namespace PAV_P1_Grupo02.Controllers
         {
             using (PAV_PARCIAL_IEntities dProducto = new PAV_PARCIAL_IEntities())
             {
-                var Objeto = dProducto.producto.Find(id);
+                var Objeto = dProducto.PRODUCTOS.Find(id);
                 dProducto.PRODUCTOS.Remove(Objeto);
                 dProducto.SaveChanges();
             }
-            return Redirect("/");
+            return RedirectToAction("Index");
         }
     }
 }

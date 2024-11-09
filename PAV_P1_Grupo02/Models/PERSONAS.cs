@@ -17,7 +17,7 @@ namespace PAV_P1_Grupo02.Models
         public int ID_PERSONA { get; set; }
         public string IDENTIFICACION { get; set; }
         public string NOMBRE_COMPLETO { get; set; }
-        public Nullable<int> EDAD { get; set; }
+        public int EDAD { get; set; }
         public string ESTADO { get; set; }
     }
 }
