@@ -9,7 +9,7 @@ namespace PAV_P1_Grupo02.Models.ViewModels
     public class TiendasViewModel
     {
         [Display(Name = "ID")]
-        public int Id_Producto { get; set; }
+        public int Id_Tienda{ get; set; }
 
         [Required]
         [StringLength(50)]
