@@ -34,6 +34,7 @@ namespace PAV_P1_Grupo02.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Nuevo(PersonasViewModel model)
         {
             try
@@ -54,6 +55,17 @@ namespace PAV_P1_Grupo02.Controllers
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        public ActionResult Editar()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Editar(PersonasViewModel model)
+        {
+            return View();
         }
     }
 }

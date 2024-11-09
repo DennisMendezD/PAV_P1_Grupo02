@@ -17,7 +17,7 @@ namespace PAV_P1_Grupo02.Controllers
             using (PAV_PARCIAL_IEntities dTienda = new PAV_PARCIAL_IEntities())
             {
                 lista = (from datos in dTienda.TIENDAS
-                         select new TiendaViewModel
+                         select new TiendasViewModel
                          {
                              Id_Tienda = datos.ID_TIENDA,
                              Nombre = datos.NOMBRE,
@@ -45,10 +45,10 @@ namespace PAV_P1_Grupo02.Controllers
                     {
                         var Objeto = new TIENDAS();
 
-                        Objeto.Id_Tienda = TModel.ID_TIENDA;
-                        Objeto.Nombre = TModel.NOMBRE;
-                        Objeto.Direccion = TModel.DIRECCION;
-                        Objeto.Telefono = TModel.TELEFONO;
+                        Objeto.ID_TIENDA = TModel.Id_Tienda;
+                        Objeto.NOMBRE = TModel.Nombre;
+                        Objeto.DIRECCION = TModel.Direccion;
+                        Objeto.TELEFONO = TModel.Telefono;
 
                         dTienda.TIENDAS.Add(Objeto);
                         dTienda.SaveChanges();
@@ -66,15 +66,15 @@ namespace PAV_P1_Grupo02.Controllers
 
         public ActionResult Editar(int id)
         {
-            ProductoViewModel TModel = new TiendasViewModel();
+            TiendasViewModel TModel = new TiendasViewModel();
             using (PAV_PARCIAL_IEntities dTienda = new PAV_PARCIAL_IEntities())
             {
                 var Objeto = dTienda.TIENDAS.Find(id);
 
-                TModel.ID_TIENDA = Objeto.Id_Tienda;
-                TModel.NOMBRE = Objeto.Nombre;
-                TModel.DIRECCION = Objeto.Direccion;
-                TModel.TELEFONO = Objeto.Telefono;
+                TModel.Id_Tienda = Objeto.ID_TIENDA;
+                TModel.Nombre = Objeto.NOMBRE;
+                TModel.Direccion = Objeto.DIRECCION;
+                TModel.Telefono = Objeto.TELEFONO;
             }
             return View(TModel);
         }
@@ -96,8 +96,8 @@ namespace PAV_P1_Grupo02.Controllers
                         Objeto.DIRECCION = TModel.Direccion;
                         Objeto.TELEFONO = TModel.Telefono;
 
-                        dProducto.Entry(Objeto).State = System.Data.Entity.EntityState.Modified;
-                        dProducto.SaveChanges();
+                        dTienda.Entry(Objeto).State = System.Data.Entity.EntityState.Modified;
+                        dTienda.SaveChanges();
                     }
                     return Redirect("/");
                 }
@@ -117,8 +117,8 @@ namespace PAV_P1_Grupo02.Controllers
             using (PAV_PARCIAL_IEntities dTienda = new PAV_PARCIAL_IEntities())
             {
                 var Objeto = dTienda.TIENDAS.Find(id);
-                dProducto.producto.Remove(Objeto);
-                dProducto.SaveChanges();
+                dTienda.TIENDAS.Remove(Objeto);
+                dTienda.SaveChanges();
             }
             return Redirect("/");
         }
