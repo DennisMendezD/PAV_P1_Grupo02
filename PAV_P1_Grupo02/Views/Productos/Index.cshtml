@@ -1,7 +1,38 @@
 ﻿
+@model List<PAV_P1_Grupo02.Models.ViewModels.ProductosViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Productos";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title </h2>
 
+<div style="text-align:right;">
+    <a href="~/Producto/Nuevo" class="btn btn-primary">Registrar Producto</a>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+            </tr>
+            @foreach (var Objeto in Model)
+            {
+                <tr>
+                    <td>@Objeto.Id_Producto</td>
+                    <td>@Objeto.Descripcion</td>
+                    <td>@Objeto.Cantidad</td>
+                    <td>
+                        <a class="btn btn-secondary" href="~/Producto/Editar/@Objeto.Id_Producto">Editar</a>
+                        <a class="btn btn-danger" href="~/Producto/Eliminar/@Objeto.Id_Producto">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+</div>
