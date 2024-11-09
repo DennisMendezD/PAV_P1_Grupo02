@@ -1,36 +1,37 @@
 ﻿@model PAV_P1_Grupo02.Models.ViewModels.PersonasViewModel
-@{
-    ViewBag.Title = "Registrar persona";
-}
+    @{
+        ViewBag.Title = "Registrar persona";
+    }
 
-<h2>@ViewBag.Title</h2>
+    <h2>@ViewBag.Title</h2>
+    id_persona
+        identificacion
+        nombre_completo
+        edad
+        estado
 
-@*id_persona
-identificacion
-nombre_completo
-edad
-estado*@
+    @using (Html.BeginForm("Nuevo", "Personas", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-12">
 
-@using (Html.BeginForm("Nuevo", "Personas", FormMethod.Post))
-{
-    <div class="row">
-        <div class="col-md-12">
+                @Html.LabelFor(d => d.Identificacion)
+                @Html.TextBoxFor(d => d.Identificacion, "", new { @class = "form-control" })
 
-            @Html.LabelFor(d => d.Identificacion)
-            @Html.TextBoxFor(d => d.Identificacion, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.NombreCompleto)
+                @Html.TextBoxFor(d => d.NombreCompleto, "", new { @class = "form-control" })
 
-            @Html.LabelFor(d => d.NombreCompleto)
-            @Html.TextBoxFor(d => d.NombreCompleto, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.Edad)
+                @Html.TextBoxFor(d => d.Edad, "", new { @class = "form-control" })
 
-            @Html.LabelFor(d => d.Edad)
-            @Html.TextBoxFor(d => d.Edad, "", new { @class = "form-control" })
+                @Html.LabelFor(d => d.Estado)
+                @Html.TextBoxFor(d => d.Estado, "", new { @class = "form-control" })
 
-            @Html.LabelFor(d => d.Estado)
-            @Html.TextBoxFor(d => d.Estado, "", new { @class = "form-control" })
-
-            <div style="text-align:right">
-                <input value="Guardar" class="btn btn-primary" type="submit" />
+                <div style="text-align:right">
+                    <input value="Guardar" class="btn btn-primary" type="submit" />
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+
+
